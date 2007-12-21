@@ -1,3 +1,14 @@
+Version 0.2.1
+=============
+
+Image Rotator
+
+	* Reset EXIF orientation after image rotation
+
+Translators
+
+	* Antti Sokero (fi)
+
 Version 0.2.0
 =============
 

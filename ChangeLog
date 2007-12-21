@@ -1,5 +1,9 @@
 2007-12-21  Jürg Billeter  <j@bitron.ch>
 
+	* NEWS: update for 0.2.1 release
+
+2007-12-21  Jürg Billeter  <j@bitron.ch>
+
 	* po/LINGUAS, po/fi.po: Added Finnish translation by
 	  Antti Sokero <antti.sokero@opinsys.fi>
 
