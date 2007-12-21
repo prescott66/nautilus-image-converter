@@ -1,3 +1,8 @@
+2006-01-19  Jürg Billeter  <j@bitron.ch>
+
+	* po/ru.po: Updated Russian translation by
+	Tchak <polo@tchak.net>
+
 2005-10-17  Jürg Billeter  <j@bitron.ch>
 
 	* configure.ac: Added "ru" to ALL_LINGUAS.
