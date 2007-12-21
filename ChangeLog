@@ -1,5 +1,10 @@
 2007-09-26  Jürg Billeter  <j@bitron.ch>
 
+	* po/LINGUAS, po/sv.po: Added Swedish translation by
+	  Daniel Nylander <info@danielnylander.se>
+
+2007-09-26  Jürg Billeter  <j@bitron.ch>
+
 	* po/LINGUAS, po/es.po: Added Spanish translation by
 	  Stephen Denham <stephen.denham@gmail.com>
 
