@@ -2,3 +2,5 @@
 src/nautilus-image-converter.c
 src/nautilus-image-resizer.c
 src/nautilus-image-resize.glade
+src/nautilus-image-rotator.c
+src/nautilus-image-rotate.glade

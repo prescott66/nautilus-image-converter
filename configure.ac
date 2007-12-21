@@ -1,4 +1,4 @@
-AC_INIT([nautilus-image-converter], [0.0.8], [j@bitron.ch], [nautilus-image-converter])
+AC_INIT([nautilus-image-converter], [0.0.9], [j@bitron.ch], [nautilus-image-converter])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
