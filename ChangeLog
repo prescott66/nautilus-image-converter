@@ -1,3 +1,9 @@
+2005-10-10  Jürg Billeter  <j@bitron.ch>
+
+	* configure.ac: Added "it" to ALL_LINGUAS.
+	* po/it.po: Added Italian translation by
+	Stefano Fabri <bluefuture@email.it>
+
 2005-08-29  Jürg Billeter  <j@bitron.ch>
 
 	* Makefile.am: dist intltool files
