@@ -1,0 +1,3 @@
+# List of source files which contain translatable strings.
+src/nautilus-image-converter.c
+src/nautilus-image-resizer.c
