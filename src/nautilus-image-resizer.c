@@ -165,6 +165,7 @@ nautilus_image_resizer_transform_uri (NautilusImageResizer *resizer, char *text_
 	GnomeVFSURI *uri;
 	GnomeVFSURI *parent;
 	GnomeVFSURI *new_uri;
+	char *escaped_basename;
 	char *basename;
 	char *extension;
 	char *new_basename;
@@ -174,7 +175,9 @@ nautilus_image_resizer_transform_uri (NautilusImageResizer *resizer, char *text_
 	
 	parent = gnome_vfs_uri_get_parent (uri);
 	
-	basename = gnome_vfs_uri_extract_short_path_name (uri);
+	escaped_basename = gnome_vfs_uri_extract_short_path_name (uri);
+	basename = gnome_vfs_unescape_string (escaped_basename, "/");
+	g_free (escaped_basename);
 	gnome_vfs_uri_unref (uri);
 	extension = g_strdup (strrchr (basename, '.'));
 	if (extension != NULL)

@@ -1,5 +1,10 @@
 2005-10-10  Jürg Billeter  <j@bitron.ch>
 
+	* src/nautilus-image-resizer.c: unescape new file name
+	* configure.ac: Bump version to 0.0.4
+
+2005-10-10  Jürg Billeter  <j@bitron.ch>
+
 	* configure.ac: Added "it" to ALL_LINGUAS.
 	* po/it.po: Added Italian translation by
 	Stefano Fabri <bluefuture@email.it>
