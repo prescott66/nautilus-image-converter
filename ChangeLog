@@ -1,5 +1,10 @@
 2007-12-21  Jürg Billeter  <j@bitron.ch>
 
+	* po/LINGUAS, po/fi.po: Added Finnish translation by
+	  Antti Sokero <antti.sokero@opinsys.fi>
+
+2007-12-21  Jürg Billeter  <j@bitron.ch>
+
 	* src/nautilus-image-rotator.c: (run_op): reset exif orientation to
 	  avoid double image rotation
 
