@@ -1,5 +1,11 @@
 2006-12-07  Jürg Billeter  <j@bitron.ch>
 
+	* src/nautilus-image-rotator.c: Fix typo in assert macro.
+	
+	* configure.ac: Bump version to 0.0.8
+
+2006-12-07  Jürg Billeter  <j@bitron.ch>
+
 	* src/nautilus-image-converter.c
 	* src/nautilus-image-rotator.c
 	* src/nautilus-image-rotator.h

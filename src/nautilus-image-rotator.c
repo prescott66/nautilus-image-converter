@@ -379,12 +379,12 @@ nautilus_image_rotator_response_cb (GtkDialog *dialog, gint response_id, gpointe
 				priv->angle = g_strdup_printf ("180");
 				break;
 			default:
-				g_assert_if_reached ();
+				g_assert_not_reached ();
 			}
 		} else if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->custom_angle_radiobutton))) {
 			priv->angle = g_strdup_printf ("%d", (int) gtk_spin_button_get_value (priv->angle_spinbutton));
 		} else {
-			g_assert_if_reached ();
+			g_assert_not_reached ();
 		}
 		
 		run_op (rotator);
