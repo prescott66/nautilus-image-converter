@@ -1,0 +1,63 @@
+Version 0.2.0
+=============
+
+Translators
+
+	* Daniel Nylander (sv)
+	* Eddy Pronk (nl)
+	* Julien Valroff (fr)
+	* Pavel Chovancik (cs)
+	* Piotr Szotkowski (pl)
+	* Stephen Denham (es)
+
+Version 0.0.9
+=============
+
+Translators
+
+	* Kazutaka Harada (ja)
+
+Version 0.0.8
+=============
+
+Image Rotator
+
+	* Build fix
+
+Version 0.0.7
+=============
+
+General
+
+	* Add support for image rotation
+
+Version 0.0.6
+=============
+
+Image Resizer
+
+	* Support scaling images by percentage (Paul W. Frields)
+
+Translators
+
+	* Sylvain Archenault (fr)
+	* Tchak (ru)
+
+Version 0.0.5
+=============
+
+Translators
+
+	* Tchak (ru)
+
+Version 0.0.4
+=============
+
+General
+
+	* Fix filename escaping
+
+Translators
+
+	* Stefano Fabri (it)
+
