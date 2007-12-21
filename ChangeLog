@@ -1,5 +1,10 @@
 2006-01-19  Jürg Billeter  <j@bitron.ch>
 
+	* src/nautilus-image-resizer.c: Remove unnecessary -size argument.
+	  Patch by Paul W. Frields <stickster@gmail.com>
+
+2006-01-19  Jürg Billeter  <j@bitron.ch>
+
 	* po/ru.po: Updated Russian translation by
 	Tchak <polo@tchak.net>
 

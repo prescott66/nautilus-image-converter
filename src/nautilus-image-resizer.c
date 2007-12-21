@@ -315,15 +315,13 @@ run_op (NautilusImageResizer *resizer)
 	
 	/* FIXME: check whether new_uri already exists and provide "Replace _All", "_Skip", and "_Replace" options */
 	
-	gchar *argv[8];
+	gchar *argv[6];
 	argv[0] = "/usr/bin/convert";
-	argv[1] = "-size";
-	argv[2] = priv->size;
-	argv[3] = filename;
-	argv[4] = "-resize";
-	argv[5] = priv->size;
-	argv[6] = new_filename;
-	argv[7] = NULL;
+	argv[1] = filename;
+	argv[2] = "-resize";
+	argv[3] = priv->size;
+	argv[4] = new_filename;
+	argv[5] = NULL;
 	
 	pid_t pid;
 
