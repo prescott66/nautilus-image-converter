@@ -1,5 +1,9 @@
 2007-09-26  Jürg Billeter  <j@bitron.ch>
 
+	* configure.ac: Post-release version bump
+
+2007-09-26  Jürg Billeter  <j@bitron.ch>
+
 	* po/POTFILES.in: use UTF-8 encoding
 
 	* configure.ac: Bump version to 0.2.0
