@@ -314,13 +314,15 @@ run_op (NautilusImageRotator *rotator)
 	
 	/* FIXME: check whether new_uri already exists and provide "Replace _All", "_Skip", and "_Replace" options */
 	
-	gchar *argv[6];
+	gchar *argv[8];
 	argv[0] = "/usr/bin/convert";
 	argv[1] = filename;
 	argv[2] = "-rotate";
 	argv[3] = priv->angle;
-	argv[4] = new_filename;
-	argv[5] = NULL;
+	argv[4] = "-orient";
+	argv[5] = "TopLeft";
+	argv[6] = new_filename;
+	argv[7] = NULL;
 	
 	pid_t pid;
 

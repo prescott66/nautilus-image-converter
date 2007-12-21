@@ -1,3 +1,8 @@
+2007-12-21  Jürg Billeter  <j@bitron.ch>
+
+	* src/nautilus-image-rotator.c: (run_op): reset exif orientation to
+	  avoid double image rotation
+
 2007-09-26  Jürg Billeter  <j@bitron.ch>
 
 	* configure.ac: Post-release version bump
