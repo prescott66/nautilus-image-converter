@@ -55,6 +55,8 @@ struct _NautilusImageResizerPrivate {
 	GtkDialog *resize_dialog;
 	GtkRadioButton *default_size_radiobutton;
 	GtkComboBox *size_combobox;
+	GtkRadioButton *custom_pct_radiobutton;
+	GtkSpinButton *pct_spinbutton;
 	GtkRadioButton *custom_size_radiobutton;
 	GtkSpinButton *width_spinbutton;
 	GtkSpinButton *height_spinbutton;
@@ -370,6 +372,8 @@ nautilus_image_resizer_response_cb (GtkDialog *dialog, gint response_id, gpointe
 		}
 		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->default_size_radiobutton))) {
 			priv->size = gtk_combo_box_get_active_text (GTK_COMBO_BOX (priv->size_combobox));
+		} else if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->custom_pct_radiobutton))) {
+			priv->size = g_strdup_printf ("%d%%", (int) gtk_spin_button_get_value (priv->pct_spinbutton));
 		} else {
 			priv->size = g_strdup_printf ("%dx%d", (int) gtk_spin_button_get_value (priv->width_spinbutton), (int) gtk_spin_button_get_value (priv->height_spinbutton));
 		}
@@ -393,6 +397,8 @@ nautilus_image_resizer_init(NautilusImageResizer *resizer)
 	priv->default_size_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "default_size_radiobutton"));
 	priv->size_combobox = GTK_COMBO_BOX (glade_xml_get_widget (xml_dialog, "size_combobox"));
 	gtk_combo_box_set_active  (priv->size_combobox, 4); /* 1024x768 */
+	priv->custom_pct_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "custom_pct_radiobutton"));
+	priv->pct_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "pct_spinbutton"));
 	priv->custom_size_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "custom_size_radiobutton"));
 	priv->width_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "width_spinbutton"));
 	priv->height_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "height_spinbutton"));
