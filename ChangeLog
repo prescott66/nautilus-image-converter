@@ -1,5 +1,10 @@
 2007-09-09  Jürg Billeter  <j@bitron.ch>
 
+	* po/LINGUAS, po/nl.po: Added Dutch translation by
+	  Eddy Pronk <epronk@muftor.com>
+
+2007-09-09  Jürg Billeter  <j@bitron.ch>
+
 	* po/LINGUAS, po/pl.po: Added Polish translation by
 	  Piotr Szotkowski <shot@hot.pl>
 
