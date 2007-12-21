@@ -392,7 +392,7 @@ nautilus_image_resizer_init(NautilusImageResizer *resizer)
 	GladeXML *xml_dialog;
 
 	xml_dialog = glade_xml_new (PKGDATADIR "/nautilus-image-resize.glade",
-					  NULL, NULL);
+					  NULL, GETTEXT_PACKAGE);
 	priv->resize_dialog = GTK_DIALOG (glade_xml_get_widget (xml_dialog, "resize_dialog"));
 	priv->default_size_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "default_size_radiobutton"));
 	priv->size_combobox = GTK_COMBO_BOX (glade_xml_get_widget (xml_dialog, "size_combobox"));
