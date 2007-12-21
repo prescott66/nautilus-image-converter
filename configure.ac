@@ -1,4 +1,4 @@
-AC_INIT([nautilus-image-converter], [0.0.5], [j@bitron.ch], [nautilus-image-converter])
+AC_INIT([nautilus-image-converter], [0.0.6], [j@bitron.ch], [nautilus-image-converter])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -7,6 +7,7 @@ AM_MAINTAINER_MODE
 
 # Checks for programs.
 AC_PROG_CC
+AC_DISABLE_STATIC
 
 AH_TEMPLATE([GETTEXT_PACKAGE], [Package name for gettext])
 GETTEXT_PACKAGE=nautilus-image-converter
