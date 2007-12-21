@@ -1,0 +1,5 @@
+2005-08-28  Jürg Billeter  <j@bitron.ch>
+
+	* src/nautilus-image-resizer.c: fix glade file path
+	* src/Makefile.am: dist and install glade file
+	* configure.ac: Bump version to 0.0.2

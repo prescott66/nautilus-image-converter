@@ -37,6 +37,8 @@
 
 #include <libnautilus-extension/nautilus-file-info.h>
  
+#define PKGDATADIR DATADIR "/" PACKAGE
+
 typedef struct _NautilusImageResizerPrivate NautilusImageResizerPrivate;
 
 struct _NautilusImageResizerPrivate {
@@ -377,8 +379,6 @@ nautilus_image_resizer_response_cb (GtkDialog *dialog, gint response_id, gpointe
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
-#define GLADEDIR "."
-
 static void
 nautilus_image_resizer_init(NautilusImageResizer *resizer)
 {
@@ -386,7 +386,7 @@ nautilus_image_resizer_init(NautilusImageResizer *resizer)
 
 	GladeXML *xml_dialog;
 
-	xml_dialog = glade_xml_new (GLADEDIR "/nautilus-image-resize.glade",
+	xml_dialog = glade_xml_new (PKGDATADIR "/nautilus-image-resize.glade",
 					  NULL, NULL);
 	priv->resize_dialog = GTK_DIALOG (glade_xml_get_widget (xml_dialog, "resize_dialog"));
 	priv->default_size_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "default_size_radiobutton"));
