@@ -27,6 +27,7 @@
 
 #include "nautilus-image-converter.h"
 #include "nautilus-image-resizer.h"
+#include "nautilus-image-rotator.h"
 
 #include <libnautilus-extension/nautilus-menu-provider.h>
 
@@ -86,6 +87,14 @@ image_resize_callback (NautilusMenuItem *item,
 	nautilus_image_resizer_show_dialog (resizer);
 }
 
+static void
+image_rotate_callback (NautilusMenuItem *item,
+			GList *files)
+{
+	NautilusImageRotator *rotator = nautilus_image_rotator_new (image_converter_filter_images (files));
+	nautilus_image_rotator_show_dialog (rotator);
+}
+
 static GList *
 nautilus_image_converter_get_background_items (NautilusMenuProvider *provider,
 					     GtkWidget		  *window,
@@ -115,7 +124,7 @@ nautilus_image_converter_get_file_items (NautilusMenuProvider *provider,
 					
 			items = g_list_prepend (items, item);
 
-			/*item = nautilus_menu_item_new ("NautilusImageConverter::rotate",
+			item = nautilus_menu_item_new ("NautilusImageConverter::rotate",
 				        _("Ro_tate Images..."),
 				        _("Rotate each selected image"),
 				       "stock_rotate");
@@ -123,7 +132,7 @@ nautilus_image_converter_get_file_items (NautilusMenuProvider *provider,
 					  G_CALLBACK (image_rotate_callback),
 					  nautilus_file_info_list_copy (files));
 
-			items = g_list_prepend (items, item);*/
+			items = g_list_prepend (items, item);
 			
 			items = g_list_reverse (items);
 
