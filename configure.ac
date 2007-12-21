@@ -1,4 +1,4 @@
-AC_INIT([nautilus-image-converter], [0.0.4], [j@bitron.ch], [nautilus-image-converter])
+AC_INIT([nautilus-image-converter], [0.0.5], [j@bitron.ch], [nautilus-image-converter])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -12,7 +12,7 @@ AH_TEMPLATE([GETTEXT_PACKAGE], [Package name for gettext])
 GETTEXT_PACKAGE=nautilus-image-converter
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE")
 AC_SUBST(GETTEXT_PACKAGE)
-ALL_LINGUAS="it"
+ALL_LINGUAS="it ru"
 AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
 AC_PROG_LIBTOOL

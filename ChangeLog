@@ -1,3 +1,11 @@
+2005-10-17  Jürg Billeter  <j@bitron.ch>
+
+	* configure.ac: Added "ru" to ALL_LINGUAS.
+	* po/POTFILES.in: Added dialog to list of translatable files.
+	* po/ru.po: Added Russian translation by
+	Tchak <polo@tchak.net>
+	* configure.ac: Bump version to 0.0.5
+
 2005-10-10  Jürg Billeter  <j@bitron.ch>
 
 	* src/nautilus-image-resizer.c: unescape new file name
