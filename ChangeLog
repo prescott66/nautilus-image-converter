@@ -1,3 +1,8 @@
+2007-12-22  Jürg Billeter  <j@bitron.ch>
+
+	* po/LINGUAS, po/pt_BR.po: Added Brazilian Portuguese translation by
+	  Washington Lins <washington-lins@uol.com.br>
+
 2007-12-21  Jürg Billeter  <j@bitron.ch>
 
 	* configure.ac: Post-release version bump
