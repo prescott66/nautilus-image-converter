@@ -1,3 +1,10 @@
+2007-12-24  Brian Pepple  <bpepple@fedoraproject.org>
+
+	* configure.ac (NAUTILUS_LIBS): 
+	* src/Makefile.am (nautilus_extensiondir): 
+
+	Get nautilus extension dir from nautilus-extension.pc
+
 2007-12-22  Jürg Billeter  <j@bitron.ch>
 
 	* po/LINGUAS, po/pt_BR.po: Added Brazilian Portuguese translation by
