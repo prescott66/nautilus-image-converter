@@ -103,7 +103,7 @@ msgstr "Largeur :"
 
 #: ../src/nautilus-image-resize.glade.h:12
 msgid "_Resize"
-msgstr ".resized"
+msgstr "_Redimensionnement"
 
 #: ../src/nautilus-image-resize.glade.h:13
 msgid "percent"
