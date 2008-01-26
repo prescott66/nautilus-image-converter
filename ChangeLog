@@ -1,3 +1,7 @@
+2008-01-26  Jürg Billeter  <j@bitron.ch>
+
+	* configure.ac: Bump version to 0.3.0
+
 2007-12-24  Brian Pepple  <bpepple@fedoraproject.org>
 
 	* configure.ac (NAUTILUS_LIBS): 
