@@ -1,7 +1,7 @@
 /*
  *  nautilus-image-rotator.c
  * 
- *  Copyright (C) 2004-2006 Jürg Billeter
+ *  Copyright (C) 2004-2008 Jürg Billeter
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public
@@ -30,10 +30,9 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
-
-#include <libgnomevfs/gnome-vfs.h>
 
 #include <libnautilus-extension/nautilus-file-info.h>
  
@@ -156,45 +155,36 @@ nautilus_image_rotator_class_init(NautilusImageRotatorClass *klass)
 
 static void run_op (NautilusImageRotator *rotator);
 
-static char *
-nautilus_image_rotator_transform_uri (NautilusImageRotator *rotator, char *text_uri)
+static GFile *
+nautilus_image_rotator_transform_filename (NautilusImageRotator *rotator, GFile *orig_file)
 {
 	NautilusImageRotatorPrivate *priv = NAUTILUS_IMAGE_ROTATOR_GET_PRIVATE (rotator);
 
-	GnomeVFSURI *uri;
-	GnomeVFSURI *parent;
-	GnomeVFSURI *new_uri;
-	char *escaped_basename;
-	char *basename;
-	char *extension;
-	char *new_basename;
-	char *new_text_uri;
+	GFile *parent_file, *new_file;
+	char *basename, *extension, *new_path, *new_basename;
 	
-	uri = gnome_vfs_uri_new (text_uri);
+	g_return_val_if_fail (G_IS_FILE (orig_file), NULL);
+
+	parent_file = g_file_get_parent (orig_file);
+
+	basename = g_strdup (g_file_get_basename (orig_file));
 	
-	parent = gnome_vfs_uri_get_parent (uri);
-	
-	escaped_basename = gnome_vfs_uri_extract_short_path_name (uri);
-	basename = gnome_vfs_unescape_string (escaped_basename, "/");
-	g_free (escaped_basename);
-	gnome_vfs_uri_unref (uri);
 	extension = g_strdup (strrchr (basename, '.'));
 	if (extension != NULL)
 		basename[strlen (basename) - strlen (extension)] = '\0';
+		
 	new_basename = g_strdup_printf ("%s%s%s", basename,
 		priv->suffix == NULL ? ".tmp" : priv->suffix,
 		extension == NULL ? "" : extension);
 	g_free (basename);
 	g_free (extension);
-	
-	new_uri = gnome_vfs_uri_append_file_name (parent, new_basename);
-	gnome_vfs_uri_unref (parent);
+
+	new_file = g_file_get_child (parent_file, new_basename);
+
+	g_object_unref (parent_file);
 	g_free (new_basename);
-	
-	new_text_uri = gnome_vfs_uri_to_string (new_uri, GNOME_VFS_URI_HIDE_NONE);
-	gnome_vfs_uri_unref (new_uri);
-	
-	return new_text_uri;
+
+	return new_file;
 }
 
 static void
@@ -235,9 +225,11 @@ op_finished (GPid pid, gint status, gpointer data)
 		
 	} else if (priv->suffix == NULL) {
 		/* rotate image in place */
-		char *uri = nautilus_file_info_get_uri (file);
-		char *new_uri = nautilus_image_rotator_transform_uri (rotator, uri);
-		gnome_vfs_move (new_uri, uri, TRUE);
+		GFile *orig_location = nautilus_file_info_get_location (file);
+		GFile *new_location = nautilus_image_rotator_transform_filename (rotator, orig_location);
+		g_file_move (new_location, orig_location, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, NULL);
+		g_object_unref (orig_location);
+		g_object_unref (new_location);
 	}
 
 	if (status == 0 || !retry) {
@@ -305,13 +297,13 @@ run_op (NautilusImageRotator *rotator)
 	
 	NautilusFileInfo *file = NAUTILUS_FILE_INFO (priv->files->data);
 
-	char *uri = nautilus_file_info_get_uri (file);
-	char *filename = gnome_vfs_get_local_path_from_uri (uri);
-	char *new_uri = nautilus_image_rotator_transform_uri (rotator, uri);
-	g_free (uri);
-	char *new_filename = gnome_vfs_get_local_path_from_uri (new_uri);
-	g_free (new_uri);
-	
+	GFile *orig_location = nautilus_file_info_get_location (file);
+	char *filename = g_file_get_path (orig_location);
+	GFile *new_location = nautilus_image_rotator_transform_filename (rotator, orig_location);
+	char *new_filename = g_file_get_path (new_location);
+	g_object_unref (orig_location);
+	g_object_unref (new_location);
+
 	/* FIXME: check whether new_uri already exists and provide "Replace _All", "_Skip", and "_Replace" options */
 	
 	gchar *argv[8];
