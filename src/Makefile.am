@@ -7,7 +7,6 @@ INCLUDES =						\
 	-I$(top_srcdir)					\
 	-I$(top_builddir)				\
 	$(WARN_CFLAGS)                                  \
-	-Werror                                         \
 	$(DISABLE_DEPRECATED_CFLAGS)			\
 	$(NAUTILUS_CFLAGS)
 
