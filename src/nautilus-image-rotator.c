@@ -161,7 +161,7 @@ nautilus_image_rotator_transform_filename (NautilusImageRotator *rotator, GFile 
 	NautilusImageRotatorPrivate *priv = NAUTILUS_IMAGE_ROTATOR_GET_PRIVATE (rotator);
 
 	GFile *parent_file, *new_file;
-	char *basename, *extension, *new_path, *new_basename;
+	char *basename, *extension, *new_basename;
 	
 	g_return_val_if_fail (G_IS_FILE (orig_file), NULL);
 

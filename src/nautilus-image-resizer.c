@@ -164,7 +164,7 @@ nautilus_image_resizer_transform_filename (NautilusImageResizer *resizer, GFile 
 	NautilusImageResizerPrivate *priv = NAUTILUS_IMAGE_RESIZER_GET_PRIVATE (resizer);
 
 	GFile *parent_file, *new_file;
-	char *basename, *extension, *new_path, *new_basename;
+	char *basename, *extension, *new_basename;
 	
 	g_return_val_if_fail (G_IS_FILE (orig_file), NULL);
 

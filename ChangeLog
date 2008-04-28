@@ -1,3 +1,12 @@
+2008-04-28  Jürg Billeter  <j@bitron.ch>
+
+	* src/nautilus-image-resizer.c:
+	(nautilus_image_resizer_transform_filename):
+	* src/nautilus-image-rotator.c:
+	(nautilus_image_rotator_transform_filename):
+
+	Remove unused variables, patch by Brian Pepple
+
 2008-03-04  Jürg Billeter  <j@bitron.ch>
 
 	* src/Makefile.am: disable -Werror
