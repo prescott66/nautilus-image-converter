@@ -32,12 +32,9 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include <libnautilus-extension/nautilus-file-info.h>
  
-#define PKGDATADIR DATADIR "/" PACKAGE
-
 typedef struct _NautilusImageRotatorPrivate NautilusImageRotatorPrivate;
 
 struct _NautilusImageRotatorPrivate {
@@ -392,21 +389,47 @@ nautilus_image_rotator_init(NautilusImageRotator *rotator)
 {
 	NautilusImageRotatorPrivate *priv = NAUTILUS_IMAGE_ROTATOR_GET_PRIVATE (rotator);
 
-	GladeXML *xml_dialog;
+	GtkBuilder *ui;
+	gchar      *path;
+	guint       result;
+	GError     *err = NULL;
 
-	xml_dialog = glade_xml_new (PKGDATADIR "/nautilus-image-rotate.glade",
-					  NULL, GETTEXT_PACKAGE);
-	priv->rotate_dialog = GTK_DIALOG (glade_xml_get_widget (xml_dialog, "rotate_dialog"));
-	priv->default_angle_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "default_angle_radiobutton"));
-	priv->angle_combobox = GTK_COMBO_BOX (glade_xml_get_widget (xml_dialog, "angle_combobox"));
+	/* Let's create our gtkbuilder and load the xml file */
+	ui = gtk_builder_new ();
+	gtk_builder_set_translation_domain (ui, GETTEXT_PACKAGE);
+	path = g_build_filename (DATADIR, PACKAGE, "nautilus-image-rotate.xml", NULL);
+	result = gtk_builder_add_from_file (ui, path, &err);
+	g_free (path);
+
+	/* If we're unable to load the xml file */
+	if (result == 0) {
+		g_warning ("%s", err->message);
+		g_error_free (err);
+		return;
+	}
+
+	/* Grab some widgets */
+	priv->rotate_dialog = GTK_DIALOG (gtk_builder_get_object (ui, "rotate_dialog"));
+	priv->default_angle_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "default_angle_radiobutton"));
+	priv->angle_combobox = GTK_COMBO_BOX (gtk_builder_get_object (ui, "angle_combobox"));
+	priv->custom_angle_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "custom_angle_radiobutton"));
+	priv->angle_spinbutton =
+		GTK_SPIN_BUTTON (gtk_builder_get_object (ui, "angle_spinbutton"));
+	priv->append_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "append_radiobutton"));
+	priv->name_entry = GTK_ENTRY (gtk_builder_get_object (ui, "name_entry"));
+	priv->inplace_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "inplace_radiobutton"));
+
+	/* Set default value for combobox */
 	gtk_combo_box_set_active  (priv->angle_combobox, 0); /* 90° clockwise */
-	priv->custom_angle_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "custom_angle_radiobutton"));
-	priv->angle_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "angle_spinbutton"));
-	priv->append_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "append_radiobutton"));
-	priv->name_entry = GTK_ENTRY (glade_xml_get_widget (xml_dialog, "name_entry"));
-	priv->inplace_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "inplace_radiobutton"));
-	
-	g_signal_connect (G_OBJECT (priv->rotate_dialog), "response", (GCallback) nautilus_image_rotator_response_cb, rotator);
+
+	/* Connect the signal */
+	g_signal_connect (G_OBJECT (priv->rotate_dialog), "response",
+			  (GCallback) nautilus_image_rotator_response_cb,
+			  rotator);
 }
 
 NautilusImageRotator *

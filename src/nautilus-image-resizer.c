@@ -32,12 +32,9 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include <libnautilus-extension/nautilus-file-info.h>
  
-#define PKGDATADIR DATADIR "/" PACKAGE
-
 typedef struct _NautilusImageResizerPrivate NautilusImageResizerPrivate;
 
 struct _NautilusImageResizerPrivate {
@@ -381,24 +378,48 @@ nautilus_image_resizer_init(NautilusImageResizer *resizer)
 {
 	NautilusImageResizerPrivate *priv = NAUTILUS_IMAGE_RESIZER_GET_PRIVATE (resizer);
 
-	GladeXML *xml_dialog;
+	GtkBuilder *ui;
+	gchar      *path;
+	guint       result;
+	GError     *err = NULL;
 
-	xml_dialog = glade_xml_new (PKGDATADIR "/nautilus-image-resize.glade",
-					  NULL, GETTEXT_PACKAGE);
-	priv->resize_dialog = GTK_DIALOG (glade_xml_get_widget (xml_dialog, "resize_dialog"));
-	priv->default_size_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "default_size_radiobutton"));
-	priv->size_combobox = GTK_COMBO_BOX (glade_xml_get_widget (xml_dialog, "size_combobox"));
+	/* Let's create our gtkbuilder and load the xml file */
+	ui = gtk_builder_new ();
+	gtk_builder_set_translation_domain (ui, GETTEXT_PACKAGE);
+	path = g_build_filename (DATADIR, PACKAGE, "nautilus-image-resize.xml", NULL);
+	result = gtk_builder_add_from_file (ui, path, &err);
+	g_free (path);
+
+	/* If we're unable to load the xml file */
+	if (result == 0) {
+		g_warning ("%s", err->message);
+		g_error_free (err);
+		return;
+	}
+
+	/* Grab some widgets */
+	priv->resize_dialog = GTK_DIALOG (gtk_builder_get_object (ui, "resize_dialog"));
+	priv->default_size_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "default_size_radiobutton"));
+	priv->size_combobox = GTK_COMBO_BOX (gtk_builder_get_object (ui, "size_combobox"));
+	priv->custom_pct_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "custom_pct_radiobutton"));
+	priv->pct_spinbutton = GTK_SPIN_BUTTON (gtk_builder_get_object (ui, "pct_spinbutton"));
+	priv->custom_size_radiobutton =
+		GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "custom_size_radiobutton"));
+	priv->width_spinbutton = GTK_SPIN_BUTTON (gtk_builder_get_object (ui, "width_spinbutton"));
+	priv->height_spinbutton = GTK_SPIN_BUTTON (gtk_builder_get_object (ui, "height_spinbutton"));
+	priv->append_radiobutton = GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "append_radiobutton"));
+	priv->name_entry = GTK_ENTRY (gtk_builder_get_object (ui, "name_entry"));
+	priv->inplace_radiobutton = GTK_RADIO_BUTTON (gtk_builder_get_object (ui, "inplace_radiobutton"));
+
+	/* Set default item in combo box */
 	gtk_combo_box_set_active  (priv->size_combobox, 4); /* 1024x768 */
-	priv->custom_pct_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "custom_pct_radiobutton"));
-	priv->pct_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "pct_spinbutton"));
-	priv->custom_size_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "custom_size_radiobutton"));
-	priv->width_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "width_spinbutton"));
-	priv->height_spinbutton = GTK_SPIN_BUTTON (glade_xml_get_widget (xml_dialog, "height_spinbutton"));
-	priv->append_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "append_radiobutton"));
-	priv->name_entry = GTK_ENTRY (glade_xml_get_widget (xml_dialog, "name_entry"));
-	priv->inplace_radiobutton = GTK_RADIO_BUTTON (glade_xml_get_widget (xml_dialog, "inplace_radiobutton"));
-	
-	g_signal_connect (G_OBJECT (priv->resize_dialog), "response", (GCallback) nautilus_image_resizer_response_cb, resizer);
+
+	/* Connect signal */
+	g_signal_connect (G_OBJECT (priv->resize_dialog), "response",
+			  (GCallback) nautilus_image_resizer_response_cb,
+			  resizer);
 }
 
 NautilusImageResizer *

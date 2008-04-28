@@ -1,3 +1,22 @@
+2008-03-28  Jürg Billeter  <j@bitron.ch>
+
+	* src/nautilus-image-rotate.glade:
+	* src/nautilus-image-resize.glade: Files removed.
+
+	* data/nautilus-image-resize.xml:
+	* data/nautilus-image-rotate.xml:
+	* data/Makefile.am: New files.
+	
+	* configure.ac:
+	* Makefile.am:
+	* src/nautilus-image-resizer.c:
+	* src/nautilus-image-rotator.c:
+	* src/Makefile.am:
+	* po/POTFILES.in: Port project over to gtkbuilder,
+	and remove dep on libglade.
+
+	Patch by Brian Pepple
+
 2008-04-28  Jürg Billeter  <j@bitron.ch>
 
 	* src/nautilus-image-resizer.c:

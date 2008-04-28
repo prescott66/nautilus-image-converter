@@ -1,20 +1,18 @@
-NULL =
+SUBDIRS = data src po
 
-SUBDIRS = \
-	po \
-	src \
-	$(NULL)
+INTLTOOL = 			\
+	intltool-extract.in 	\
+	intltool-merge.in 	\
+	intltool-update.in
 
-EXTRA_DIST = \
-        intltool-extract.in \
-        intltool-update.in \
-        intltool-merge.in \
-        $(NULL)
+EXTRA_DIST = 			\
+	ChangeLog               \
+	AUTHORS			\
+	NEWS			\
+	$(INTLTOOL)
 
-DISTCLEANFILES = \
-        intltool-extract \
-        intltool-update \
-        intltool-merge \
-        po/.intltool-merge-cache \
-        $(NULL)
+DISTCLEANFILES = 		\
+	intltool-extract	\
+	intltool-merge		\
+	intltool-update
 
