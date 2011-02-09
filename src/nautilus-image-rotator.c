@@ -268,7 +268,6 @@ run_op (NautilusImageRotator *rotator)
 		priv->progress_dialog = gtk_dialog_new ();
 		gtk_window_set_title (GTK_WINDOW (priv->progress_dialog), "Rotating files");
 		gtk_dialog_add_button (GTK_DIALOG (priv->progress_dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
-		gtk_dialog_set_has_separator (GTK_DIALOG (priv->progress_dialog), FALSE);
 		g_signal_connect (priv->progress_dialog, "response", G_CALLBACK (nautilus_image_rotator_cancel_cb), rotator);
 		
 		vbox = GTK_DIALOG (priv->progress_dialog)->vbox;
