@@ -47,7 +47,7 @@ struct _NautilusImageResizerClass {
 	/* Add Signal Functions Here */
 };
 
-GType nautilus_image_resizer_get_type ();
+GType nautilus_image_resizer_get_type (void);
 NautilusImageResizer *nautilus_image_resizer_new (GList *files);
 void nautilus_image_resizer_show_dialog (NautilusImageResizer *dialog);
 

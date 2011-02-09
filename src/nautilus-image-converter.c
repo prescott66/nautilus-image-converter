@@ -38,6 +38,9 @@
 
 static void nautilus_image_converter_instance_init (NautilusImageConverter      *img);
 static void nautilus_image_converter_class_init    (NautilusImageConverterClass *class);
+GList *     nautilus_image_converter_get_file_items (NautilusMenuProvider *provider,
+						     GtkWidget            *window,
+						     GList                *files);
 
 static GType image_converter_type = 0;
 

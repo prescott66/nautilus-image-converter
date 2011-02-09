@@ -31,6 +31,12 @@
 
 static GType type_list[1];
 
+void nautilus_module_initialize (GTypeModule  *module);
+void nautilus_module_shutdown   (void);
+void nautilus_module_list_types (const GType **types,
+				 int          *num_types);
+
+
 void
 nautilus_module_initialize (GTypeModule *module)
 {

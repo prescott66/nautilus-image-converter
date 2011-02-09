@@ -47,7 +47,7 @@ struct _NautilusImageRotatorClass {
 	/* Add Signal Functions Here */
 };
 
-GType nautilus_image_rotator_get_type ();
+GType nautilus_image_rotator_get_type (void);
 NautilusImageRotator *nautilus_image_rotator_new (GList *files);
 void nautilus_image_rotator_show_dialog (NautilusImageRotator *dialog);
 
