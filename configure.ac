@@ -2,6 +2,7 @@ AC_INIT([nautilus-image-converter], [0.3.1], [j@bitron.ch], [nautilus-image-conv
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
+m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
 AM_MAINTAINER_MODE
 
