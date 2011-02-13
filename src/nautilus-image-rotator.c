@@ -245,51 +245,11 @@ op_finished (GPid pid, gint status, gpointer data)
 }
 
 static void
-nautilus_image_rotator_cancel_cb (GtkDialog *dialog, gint response_id, gpointer user_data)
-{
-	NautilusImageRotator *rotator = NAUTILUS_IMAGE_ROTATOR (user_data);
-	NautilusImageRotatorPrivate *priv = NAUTILUS_IMAGE_ROTATOR_GET_PRIVATE (rotator);
-	
-	priv->cancelled = TRUE;
-	gtk_dialog_set_response_sensitive (dialog, GTK_RESPONSE_CANCEL, FALSE);
-}
-
-static void
 run_op (NautilusImageRotator *rotator)
 {
 	NautilusImageRotatorPrivate *priv = NAUTILUS_IMAGE_ROTATOR_GET_PRIVATE (rotator);
 	
 	g_return_if_fail (priv->files != NULL);
-	
-	if (priv->progress_dialog == NULL) {
-		GtkWidget *vbox;
-		GtkWidget *label;
-		
-		priv->progress_dialog = gtk_dialog_new ();
-		gtk_window_set_title (GTK_WINDOW (priv->progress_dialog), "Rotating files");
-		gtk_dialog_add_button (GTK_DIALOG (priv->progress_dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
-		g_signal_connect (priv->progress_dialog, "response", G_CALLBACK (nautilus_image_rotator_cancel_cb), rotator);
-		
-		vbox = GTK_DIALOG (priv->progress_dialog)->vbox;
-		gtk_container_set_border_width (GTK_CONTAINER (priv->progress_dialog), 5);
-		gtk_box_set_spacing (GTK_BOX (vbox), 8);
-		gtk_window_set_default_size (GTK_WINDOW (priv->progress_dialog), 400, -1);
-		
-		
-		label = gtk_label_new ("<big><b>Rotating images</b></big>");
-		gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-		gtk_misc_set_alignment (GTK_MISC (label), 0, 0);
-		gtk_box_pack_start_defaults (GTK_BOX (vbox), label);
-
-		priv->progress_bar = gtk_progress_bar_new ();
-		gtk_box_pack_start (GTK_BOX (vbox), priv->progress_bar, FALSE, FALSE, 0);
-
-		priv->progress_label = gtk_label_new ("");
-		gtk_misc_set_alignment (GTK_MISC (priv->progress_label), 0, 0);
-		gtk_box_pack_start_defaults (GTK_BOX (vbox), priv->progress_label);
-		
-		gtk_widget_show_all (priv->progress_dialog);
-	}
 	
 	NautilusFileInfo *file = NAUTILUS_FILE_INFO (priv->files->data);
 
