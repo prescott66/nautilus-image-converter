@@ -1,3 +1,17 @@
+Version x.x.x
+=============
+General
+        * Port to Gtk3/GNOME3
+        * Fix distcheck so that it works without root privileges
+        * Enable silent build
+
+Translators
+
+        * Yaron Shahrabani (he)
+        * Siegfried-Angel Gevatter Pujals (ca)
+        * Jens Wiesser (de)
+        * Svetoslav Stefanov (bg)
+
 Version 0.3.0
 =============
 
