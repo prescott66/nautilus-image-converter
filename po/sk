@@ -1,0 +1,177 @@
+# Slovak translation of nautilus-image-converter.
+# Copyright (C) 2007 THE nautilus-image-converter'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the nautilus-image-converter package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-image-converter 0.0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-15 22:19+0900\n"
+"PO-Revision-Date: 2013-04-14 13:33+0100\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../src/nautilus-image-converter.c:118
+msgid "_Resize Images..."
+msgstr "_Zmeniť veľkosť obrázkov…"
+
+#: ../src/nautilus-image-converter.c:119
+msgid "Resize each selected image"
+msgstr "Zmeniť veľkosť každého vybratého obrázka"
+
+#: ../src/nautilus-image-converter.c:128
+msgid "Ro_tate Images..."
+msgstr "_Otočiť obrázky…"
+
+#: ../src/nautilus-image-converter.c:129
+msgid "Rotate each selected image"
+msgstr "Otočiť každý vybratý obrázok"
+
+#: ../src/nautilus-image-resizer.c:224 ../src/nautilus-image-rotator.c:221
+msgid "_Skip"
+msgstr "Pre_skočit"
+
+#: ../src/nautilus-image-resizer.c:226 ../src/nautilus-image-rotator.c:223
+msgid "_Retry"
+msgstr "_Znova"
+
+#: ../src/nautilus-image-resizer.c:343
+#, c-format
+msgid "Resizing image: %d of %d"
+msgstr "Mení se veľkosť obrázkov: %d z %d"
+
+#: ../src/nautilus-image-resizer.c:348
+#, c-format
+msgid "<i>Resizing \"%s\"</i>"
+msgstr "<i>Mení se veľkosť obrázka „%s“</i>"
+
+#: ../src/nautilus-image-resizer.c:366 ../src/nautilus-image-rotator.c:363
+msgid "Please enter a valid filename suffix!"
+msgstr "Prosím, zadajte platnú príponu názvu súboru!"
+
+#: ../src/nautilus-image-resize.glade.h:1
+msgid ".resized"
+msgstr ".zmenena-velkost"
+
+#: ../src/nautilus-image-resize.glade.h:2
+#: ../src/nautilus-image-rotate.glade.h:5
+#: ../src/nautilus-image-resize.glade.h:3
+msgid "<b>Filename</b><b>Image Size</b>"
+msgstr "<b>Názov súboru</b><b>Veľkosť obrázka</b>"
+
+#: ../src/nautilus-image-resize.glade.h:4
+#: ../src/nautilus-image-rotate.glade.h:7
+msgid "Append"
+msgstr "Pridať"
+
+#: ../src/nautilus-image-resize.glade.h:5
+msgid "Custom size:"
+msgstr "Vlastná veľkosť:"
+
+#: ../src/nautilus-image-resize.glade.h:6
+msgid "Height:"
+msgstr "Výška:"
+
+# window title
+#: ../src/nautilus-image-resize.glade.h:7
+msgid "Resize Images"
+msgstr "Zmena veľkosti obrázkov"
+
+#: ../src/nautilus-image-resize.glade.h:8
+msgid "Resize in place"
+msgstr "Zmeniť veľkosť na mieste"
+
+#: ../src/nautilus-image-resize.glade.h:9
+msgid "Scale:"
+msgstr "Mierka:"
+
+#: ../src/nautilus-image-resize.glade.h:10
+msgid "Select a size:"
+msgstr "Vyberte veľkosť:"
+
+#: ../src/nautilus-image-resize.glade.h:11
+msgid "Width:"
+msgstr "Šírka:"
+
+#: ../src/nautilus-image-resize.glade.h:12
+msgid "_Resize"
+msgstr "_Zmeniť veľkosť"
+
+#: ../src/nautilus-image-resize.glade.h:13
+msgid "percent"
+msgstr "percent"
+
+#: ../src/nautilus-image-resize.glade.h:14
+msgid "pixels"
+msgstr "pixelov"
+
+#: ../src/nautilus-image-resize.glade.h:15
+#: ../src/nautilus-image-rotate.glade.h:14
+msgid "to file title"
+msgstr "do názvu súboru"
+
+#: ../src/nautilus-image-rotator.c:340
+#, c-format
+msgid "Rotating image: %d of %d"
+msgstr "Otáča sa obrázok: %d z %d"
+
+#: ../src/nautilus-image-rotator.c:345
+#, c-format
+msgid "<i>Rotating \"%s\"</i>"
+msgstr "<i>Otáča sa obrázok „%s“</i>"
+
+#: ../src/nautilus-image-rotate.glade.h:1
+msgid ".rotated"
+msgstr ".otoceny"
+
+#: ../src/nautilus-image-rotate.glade.h:2
+msgid ""
+"90° clockwise\n"
+"90° counter-clockwise\n"
+"180°"
+msgstr ""
+"90° doprava\n"
+"90° doľava\n"
+"180°"
+
+#: ../src/nautilus-image-rotate.glade.h:6
+msgid "<b>Image Rotation</b>"
+msgstr "<b>Otočenie obrázka</b>"
+
+#: ../src/nautilus-image-rotate.glade.h:8
+msgid "Custom angle:"
+msgstr "Vlastný uhol:"
+
+# window title
+#: ../src/nautilus-image-rotate.glade.h:9
+msgid "Rotate Images"
+msgstr "Otočenie obrázkov"
+
+#: ../src/nautilus-image-rotate.glade.h:10
+msgid "Rotate in place"
+msgstr "Otočiť na mieste"
+
+#: ../src/nautilus-image-rotate.glade.h:11
+msgid "Select an angle:"
+msgstr "Vyberte uhol:"
+
+#: ../src/nautilus-image-rotate.glade.h:12
+msgid "_Rotate"
+msgstr "_Otočiť"
+
+#: ../src/nautilus-image-rotate.glade.h:13
+msgid "degrees clockwise"
+msgstr "stupňov doprava"
+
+#: ../src/nautilus-image-resize.glade.h:2
+#: ../src/nautilus-image-rotate.glade.h:5
+msgid "<b>Filename</b>"
+msgstr "<b>Názov súboru</b>"
+
+#: ../src/nautilus-image-resize.glade.h:3
+msgid "<b>Image Size</b>"
+msgstr "<b>Veľkosť obrázka</b>"
